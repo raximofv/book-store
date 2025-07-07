@@ -1,0 +1,1019 @@
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Lato", sans-serif;
+  padding: 0;
+  margin: 0;
+  overflow-x: hidden; /* Gorizontal scrollbardan qochish */
+}
+
+/* Bosh sahifaning orqa fon rangi */
+.home-background {
+  background-color: #1a1a1a; /* To'q qora rang */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+nav {
+  background-color: #2c3e50; /* Navigatsiya rangi */
+  color: white;
+  padding: 20px 50px;
+  position: sticky; /* Navigatsiyani tepada ushlab turish */
+  top: 0;
+  z-index: 1000; /* Boshqa elementlardan ustun turishi uchun */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Yengil soya */
+}
+
+.navTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navItem img[alt="Book Icon"] { /* Book Icon olib tashlandi */
+    display: none;
+}
+
+
+.search {
+  display: flex;
+  align-items: center;
+  background-color: #4a6a8a; /* Qidiruv paneli rangi */
+  padding: 10px 20px;
+  border-radius: 10px;
+  transition: all 0.3s ease-in-out; /* Qidiruv paneliga animatsiya */
+}
+
+.search:focus-within {
+    box-shadow: 0 0 0 3px #3498db;
+}
+
+.searchInput {
+  border: none;
+  background-color: transparent;
+  color: white;
+  outline: none; /* Fokusda outline olib tashlash */
+}
+
+.searchInput::placeholder {
+  color: #c0c0c0;
+}
+
+.limitedOffer {
+  font-size: 20px;
+  border-bottom: 2px solid #e74c3c; /* Chegirma yozuvi rangi */
+  cursor: pointer;
+  animation: pulse 1.5s infinite alternate; /* Chegirma yozuviga animatsiya */
+}
+
+@keyframes pulse {
+    from {
+        transform: scale(1);
+        opacity: 1;
+    }
+    to {
+        transform: scale(1.05);
+        opacity: 0.8;
+    }
+}
+
+.navBottom {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.menuItem {
+  margin-right: 50px;
+  cursor: pointer;
+  color: #c0c0c0;
+  font-weight: 400;
+  transition: color 0.3s ease, transform 0.3s ease; /* MenuItem ga animatsiya */
+}
+
+.menuItem:hover {
+    color: white;
+    transform: translateY(-3px);
+}
+
+.slider {
+  background: none; /* Endi alohida fon rasmi yo'q */
+  background-size: cover;
+  background-position: center;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 85%);
+  overflow: hidden;
+}
+
+.sliderWrapper {
+  display: flex;
+  width: 500vw;
+  transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55); /* Tezroq va o'ziga xos animatsiya */
+}
+
+.sliderItem {
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  animation: fadeIn 1s ease-out; /* Slayder itemga animatsiya */
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.sliderBg {
+  width: 750px;
+  height: 750px;
+  border-radius: 50%;
+  position: absolute;
+  animation: scaleIn 1s ease-out; /* Slayder fonga animatsiya */
+}
+
+@keyframes scaleIn {
+    from { transform: scale(0); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.sliderImg {
+  z-index: 1;
+  width: 400px; /* Kitob rasmlari hajmini moslash */
+  height: auto;
+  transition: transform 0.5s ease-out; /* Rasmga animatsiya */
+}
+
+.sliderItem:hover .sliderImg {
+    transform: scale(1.05);
+}
+
+.sliderTitle {
+  position: absolute;
+  top: 10%;
+  right: 10%;
+  font-size: 50px; /* Kichikroq sarlavha shrifti */
+  font-weight: 900;
+  text-align: center;
+  color: white; /* Yozuvlar aniq ko'rinishi uchun oq rang */
+  z-index: 1;
+  animation: slideInRight 1s ease-out; /* Sarlavhaga animatsiya */
+}
+
+@keyframes slideInRight {
+    from { transform: translateX(50px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+.sliderPrice {
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  font-size: 60px;
+  font-weight: 300;
+  text-align: center;
+  color: white; /* Yozuvlar aniq ko'rinishi uchun oq rang */
+  border: 1px solid #7f8c8d; /* Narx chegara rangi */
+  z-index: 1;
+  animation: slideInLeft 1s ease-out; /* Narxga animatsiya */
+}
+
+@keyframes slideInLeft {
+    from { transform: translateX(-50px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+.buyButton {
+  position: absolute;
+  top: 50%;
+  right: 10%;
+  font-size: 30px;
+  font-weight: 900;
+  color: white; /* Yozuvlar aniq ko'rinishi uchun oq rang */
+  border: 1px solid #7f8c8d;
+  background-color: #2c3e50; /* Sotib olish tugmasi rangi */
+  z-index: 1;
+  cursor: pointer;
+  transition: all 0.3s ease; /* Tugmaga animatsiya */
+}
+
+.buyButton:hover {
+  background-color: #34495e; /* Hover effekti */
+  color: white;
+  transform: scale(1.05);
+}
+
+.sliderItem:nth-child(1) .sliderBg {
+  background-color: #3498db; /* Har bir slayder uchun orqa fon rangi */
+}
+.sliderItem:nth-child(2) .sliderBg {
+  background-color: #9b59b6;
+}
+.sliderItem:nth-child(3) .sliderBg {
+  background-color: #27ae60;
+}
+.sliderItem:nth-child(4) .sliderBg {
+  background-color: #e67e22;
+}
+.sliderItem:nth-child(5) .sliderBg {
+  background-color: #c0392b;
+}
+
+.sliderItem:nth-child(1) .sliderPrice {
+  color: #3498db;
+}
+.sliderItem:nth-child(2) .sliderPrice {
+  color: white;
+}
+.sliderItem:nth-child(3) .sliderPrice {
+  color: #27ae60;
+}
+.sliderItem:nth-child(4) .sliderPrice {
+  color: #e67e22;
+}
+.sliderItem:nth-child(5) .sliderPrice {
+  color: #c0392b;
+}
+
+.features {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 50px;
+  background-color: #1a1a1a; /* Features bo'limi ham to'q fonli bo'lishi uchun */
+}
+
+.feature {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  opacity: 0; /* Animatsiya uchun boshlang'ich holat */
+  transform: translateY(20px);
+  animation: slideUp 0.8s ease-out forwards; /* Feature elementlariga animatsiya */
+}
+
+.feature:nth-child(1) { animation-delay: 0.1s; }
+.feature:nth-child(2) { animation-delay: 0.3s; }
+.feature:nth-child(3) { animation-delay: 0.5s; }
+.feature:nth-child(4) { animation-delay: 0.7s; }
+
+@keyframes slideUp {
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.featureIcon {
+  width: 50px;
+  height: 50px;
+  filter: invert(1); /* Ikonlarni to'q fonda yaxshi ko'rinishi uchun oq rangga o'zgartirish */
+  transition: transform 0.3s ease;
+}
+
+.feature:hover .featureIcon {
+    transform: scale(1.1);
+}
+
+.featureTitle {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 20px;
+  color: #ecf0f1; /* Matn rangini oqroq qilish */
+}
+
+.featureDesc {
+  color: #bdc3c7; /* Matn rangini oqroq qilish */
+  width: 70%; /* Matn kengligi */
+  height: 100px;
+}
+
+.product {
+  height: 100vh;
+  background-color: #ecf0f1; /* Mahsulot sahifasi orqa fon rangi */
+  position: relative;
+  clip-path: polygon(0 15%, 100% 0, 100% 100%, 0% 100%);
+  display: flex; /* Flexbox qo'shildi */
+  align-items: center; /* Vertikal markazlash */
+  justify-content: center; /* Gorizontal markazlash */
+  padding: 50px;
+  box-sizing: border-box; /* Padding bilan o'lcham hisobga olinishi uchun */
+  overflow: hidden;
+}
+
+.product-main-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%; /* Kontentni markazda ushlab turish */
+    max-width: 1200px;
+    opacity: 0; /* Animatsiya uchun boshlang'ich holat */
+    transform: translateY(30px);
+    animation: fadeInScale 1s ease-out forwards; /* Mahsulot kontentiga animatsiya */
+}
+
+@keyframes fadeInScale {
+    to { opacity: 1; transform: translateY(0); }
+}
+
+
+.payment {
+  width: 500px;
+  height: 500px;
+  background-color: white;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  padding: 10px 50px;
+  display: none;
+  flex-direction: column;
+  -webkit-box-shadow: 0px 0px 13px 2px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 0px 13px 2px rgba(0, 0, 0, 0.3);
+  z-index: 2000; /* To'lov formasi eng ustun bo'lishi uchun */
+  animation: slideInTop 0.5s ease-out; /* To'lov formasiga animatsiya */
+}
+
+@keyframes slideInTop {
+    from { transform: translateY(-100%); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.payTitle {
+  font-size: 20px;
+  color: #7f8c8d;
+}
+
+label {
+  font-size: 14px;
+  font-weight: 300;
+}
+
+.payInput {
+  padding: 10px;
+  margin: 10px 0px;
+  border: none;
+  border-bottom: 1px solid #7f8c8d;
+  transition: border-color 0.3s ease;
+  outline: none;
+}
+
+.payInput:focus {
+    border-color: #3498db;
+}
+
+.payInput::placeholder {
+  color: #a3a3a3;
+}
+
+.cardIcons {
+  display: flex;
+  margin-top: 10px;
+}
+
+.cardIcon {
+  margin-right: 10px;
+  width: 40px;
+  height: auto;
+}
+
+.cardInfo {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.sm {
+  width: 30%;
+}
+
+.payButton {
+  position: relative; /* Absolute o'rniga relative, flex ichida */
+  margin-top: 20px;
+  height: 40px;
+  width: 100%;
+  left: 0;
+  -webkit-box-shadow: 0px 0px 13px 2px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 0px 13px 2px rgba(0, 0, 0, 0.3);
+  background-color: #3498db; /* To'lov tugmasi rangi */
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.payButton:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+}
+
+
+.close {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  background-color: #7f8c8d;
+  color: white;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 2px;
+  border-radius: 50%;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.close:hover {
+    background-color: #c0392b;
+    transform: rotate(90deg);
+}
+
+
+.productImg { /* Bu asosiy mahsulot rasmi, sliderdagisi */
+  width: 40%; /* Mahsulot rasmi hajmini moslash */
+  margin-right: 5%; /* Rasmni o'ngga surish o'rniga chapga bo'shliq */
+  max-width: 400px; /* Maksimal kenglik qo'shildi */
+  height: auto;
+  transition: transform 0.5s ease-out;
+}
+
+.productImgLeft { /* Chap yonidagi rasm uchun yangi stil */
+    width: 250px; /* Kichikroq hajm */
+    height: auto;
+    object-fit: contain;
+    margin-right: 30px; /* Matndan ajratish */
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.2); /* Yengil soya */
+    border-radius: 5px;
+    animation: popIn 0.8s ease-out;
+}
+
+@keyframes popIn {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+
+.productDetails {
+  width: 50%; /* Kontent kengligi */
+  padding: 50px 0; /* Faqat vertikal padding */
+  box-sizing: border-box;
+  animation: slideInFromRight 1s ease-out;
+}
+
+@keyframes slideInFromRight {
+    from { transform: translateX(50px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+
+.productTitle {
+  font-size: 60px; /* Mahsulot sarlavhasi shrifti */
+  font-weight: 900;
+  color: #2c3e50; /* To'qroq rang */
+  margin-bottom: 20px;
+}
+
+.productPrice {
+  font-size: 36px;
+  font-weight: 600;
+  color: #e74c3c; /* Narx uchun ajratib turuvchi rang */
+  margin-bottom: 20px;
+}
+
+.productDesc {
+  font-size: 18px; /* Mahsulot tavsifi shrifti */
+  color: #34495e; /* Tavsif matnining rangini to'qroq rangga o'zgartirish */
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+.colors,
+.sizes {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.color-text { /* Rang tugmalari o'rniga EN/UZ tugmalari uchun yangi stil */
+  padding: 8px 25px; /* Kichikroq padding */
+  border: 1px solid #2c3e50; /* Chegara rangi */
+  margin-right: 15px; /* Oraliqni oshirish */
+  cursor: pointer;
+  font-size: 18px;
+  color: #2c3e50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 60px; /* Tugma uchun minimal kenglikni oshirish */
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+.color-text:hover {
+  background-color: #2c3e50;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.color-text.active { /* Faol holat uchun rang */
+  background-color: #2c3e50;
+  color: white;
+}
+
+
+.size {
+  padding: 8px 25px;
+  border: 1px solid #2c3e50; /* Hajm tugmasi chegarasi */
+  margin-right: 15px;
+  cursor: pointer;
+  font-size: 20px;
+  color: #2c3e50;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+.size:hover {
+  background-color: #2c3e50;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.size.active { /* Faol holat uchun rang */
+  background-color: #2c3e50;
+  color: white;
+}
+
+.productButton {
+  margin-top: 30px; /* Yuqoridan biroz bo'shliq */
+  padding: 15px 30px;
+  background-color: #2c3e50; /* Mahsulot tugmasi rangi */
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+  font-size: 20px;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+}
+
+.productButton:hover {
+  background-color: #34495e;
+  color: white;
+  transform: scale(1.02);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+}
+
+.gallery {
+  padding: 50px;
+  display: flex;
+  background-color: #1a1a1a; /* Gallery bo'limi ham to'q fonli bo'lishi uchun */
+}
+
+.galleryItem {
+  flex: 1;
+  padding: 50px;
+  text-align: center;
+  overflow: hidden; /* Animatsiya chegarasi */
+}
+
+.galleryImg {
+  width: 100%;
+  height: 300px; /* Rasmlar balandligi */
+  object-fit: cover;
+  border-radius: 5px;
+  transition: transform 0.5s ease-out, filter 0.5s ease-out; /* Rasmga animatsiya */
+}
+
+.galleryItem:hover .galleryImg {
+    transform: scale(1.1);
+    filter: brightness(0.8);
+}
+
+
+.galleryTitle {
+  font-size: 30px;
+  color: #ecf0f1; /* Sarlavha rangini oqroq qilish */
+  margin-top: 20px;
+  transition: color 0.3s ease;
+}
+
+.galleryItem:hover .galleryTitle {
+    color: #3498db;
+}
+
+.newSeason {
+  display: flex;
+  background-color: #ecf0f1;
+}
+
+.nsItem {
+  flex: 1;
+  background-color: #2c3e50;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 30px;
+  box-sizing: border-box;
+}
+
+.nsImg {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: transform 0.5s ease-out;
+}
+
+.nsItem:hover .nsImg {
+    transform: scale(1.03);
+}
+
+.nsImgSmall { /* Yangi .nsImgSmall klassi */
+    width: 250px; /* Kichikroq hajm */
+    height: 350px; /* Balandlikni o'zgartirish */
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.3);
+    transition: transform 0.5s ease-out;
+}
+
+.nsItem:hover .nsImgSmall {
+    transform: scale(1.05) rotate(2deg);
+}
+
+.nsTitleSm {
+  font-size: 24px;
+  color: #bdc3c7;
+  margin-bottom: 10px;
+}
+
+.nsTitle {
+  font-size: 40px;
+  margin-bottom: 20px;
+  letter-spacing: 1.5px;
+}
+
+.nsButton {
+  padding: 15px 30px;
+  font-weight: 600;
+  cursor: pointer;
+  background-color: #e74c3c; /* Yangi mavsum tugmasi rangi */
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 18px;
+  transition: all 0.3s ease;
+}
+
+.nsButton:hover {
+  background-color: #c0392b;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+}
+
+footer {
+  display: flex;
+  background-color: #34495e; /* Footer orqa fon rangi */
+  color: white;
+  padding: 50px 0;
+}
+
+.footerLeft {
+  flex: 2;
+  display: flex;
+  justify-content: space-around; /* Bo'shliqni taqsimlash */
+  padding: 0 50px;
+}
+
+.fMenuTitle {
+  font-size: 18px;
+  color: #ecf0f1;
+  margin-bottom: 15px;
+}
+
+.fList {
+  padding: 0;
+  list-style: none;
+}
+
+.fListItem {
+  margin-bottom: 10px;
+  color: #bdc3c7;
+  cursor: pointer;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.fListItem:hover {
+    color: white;
+    transform: translateX(5px);
+}
+
+.footerRight {
+  flex: 1;
+  padding: 0 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.fMail {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.fInput {
+  padding: 10px;
+  border: none;
+  border-radius: 3px;
+  margin-right: 10px;
+  outline: none;
+}
+
+.fButton {
+  padding: 10px 15px;
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.fButton:hover {
+    background-color: #c0392b;
+}
+
+.fIcons{
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.fIcon{
+  width: 25px; /* Ikonkalar hajmini kattalashtirish */
+  height: 25px;
+  margin-right: 15px;
+  filter: invert(1); /* Ikonlarni oq rangga o'zgartirish */
+  transition: transform 0.3s ease;
+}
+
+.fIcon:hover {
+    transform: scale(1.2);
+}
+
+.copyright{
+  font-weight: 300;
+  font-size: 14px;
+  color: #bdc3c7;
+}
+
+@media screen and (max-width:480px) {
+  nav{
+    padding: 15px;
+  }
+
+  .search{
+    display: none;
+  }
+
+  .navBottom{
+    flex-wrap: wrap;
+    margin-top: 10px;
+  }
+
+  .menuItem{
+    margin: 8px 15px; /* Mobil ko'rinishda kichikroq margin */
+    font-weight: 700;
+    font-size: 14px;
+  }
+
+  .slider{
+    clip-path: none;
+  }
+
+  .sliderImg{
+    width: 70%;
+    height: auto;
+  }
+
+  .sliderBg{
+    width: 90%;
+    height: 90%;
+  }
+
+  .sliderTitle{
+    font-size: 35px; /* Mobil ko'rinishda kichikroq sarlavha */
+    right: 5%;
+    left: 5%;
+    top: 5%;
+  }
+
+  .sliderPrice{
+    font-size: 45px; /* Mobil ko'rinishda kichikroq narx */
+    left: 5%;
+    top: unset;
+    bottom: 5%;
+  }
+
+  .buyButton{
+    font-size: 22px; /* Mobil ko'rinishda kichikroq tugma */
+    right: 5%;
+    top: unset;
+    bottom: 5%;
+    padding: 8px 15px;
+  }
+
+  .features{
+    flex-direction: column;
+    padding: 30px;
+  }
+
+  .feature {
+    margin-bottom: 25px;
+  }
+
+  .featureDesc {
+    width: 90%;
+    height: auto; /* Mobil ko'rinishda balandlikni avtomatik sozlash */
+  }
+
+  .product{
+    clip-path: none ;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+    height: auto; /* Mobil ko'rinishda balandlikni avtomatik sozlash */
+  }
+
+  .product-main-content {
+      flex-direction: column;
+      width: 100%;
+  }
+
+  .productImg{
+    width: 60%; /* Mobil ko'rinishda rasm hajmi */
+    margin: 0 0 20px 0; /* Pastdan bo'shliq */
+  }
+
+  .productImgLeft {
+      width: 180px; /* Mobil ko'rinishda chapdagi rasm hajmi */
+      margin-right: 0;
+      margin-bottom: 20px;
+  }
+
+
+  .productDetails{
+    width: 95%; /* Mobil ko'rinishda tafsilotlar kengligi */
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    top: 0;
+  }
+
+  .productTitle{
+    font-size: 35px; /* Mobil ko'rinishda sarlavha */
+    margin-bottom: 15px;
+  }
+
+  .productPrice {
+    font-size: 30px;
+    margin-bottom: 15px;
+  }
+
+  .productDesc {
+    font-size: 15px;
+    margin-bottom: 25px;
+  }
+
+  .colors,
+  .sizes {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .color-text,
+  .size {
+    margin: 8px;
+    padding: 6px 18px;
+    font-size: 16px;
+    min-width: unset;
+  }
+
+  .productButton {
+    padding: 12px 25px;
+    font-size: 18px;
+    margin-top: 25px;
+  }
+
+  .gallery{
+    display: none; /* Mobil ko'rinishda galleryni yashirish */
+  }
+
+  .newSeason{
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .nsItem{
+    padding: 20px;
+  }
+
+  .nsImg {
+    height: 300px; /* Mobil ko'rinishda rasm balandligi */
+  }
+
+  .nsImgSmall {
+    width: 180px;
+    height: 250px;
+  }
+
+  .nsTitle{
+    font-size: 30px;
+  }
+
+  .nsTitleSm {
+    font-size: 20px;
+  }
+
+  .nsButton {
+    padding: 12px 25px;
+    font-size: 16px;
+  }
+
+  footer{
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 0;
+  }
+
+  .footerLeft{
+    padding: 0 20px;
+    width: 90%;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footerMenu {
+    margin-bottom: 30px;
+    text-align: center;
+  }
+
+  .fMenuTitle {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+
+  .fList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .fListItem {
+    margin: 5px 10px;
+  }
+
+  .footerRight{
+    padding: 0 20px;
+    width: 90%;
+    align-items: center;
+  }
+
+  .fMail {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .fInput {
+    margin-bottom: 10px;
+    width: 90%;
+    text-align: center;
+  }
+
+  .fButton {
+    width: 90%;
+  }
+
+  .fIcons {
+    justify-content: center;
+  }
+  .payment{
+    width: 90%;
+    padding: 20px;
+  }
+}
